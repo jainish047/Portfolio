@@ -242,7 +242,7 @@ function CursorTracker({
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseleave", onMouseLeave);
     };
-  }, [size, camera, setCursor3D, getCursor3D]);
+  }, [size, camera, setCursor3D]);
 
   return null;
 }

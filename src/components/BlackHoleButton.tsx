@@ -84,7 +84,7 @@ function BlackHole() {
     const width = 3;
     // const height = 4;
     const height = width; // height of the black hole
-    const R = height / 2;``
+    const R = height / 2;
     const d = 8; // 1/curvature factor
     const s = 2; // slope factor
 
