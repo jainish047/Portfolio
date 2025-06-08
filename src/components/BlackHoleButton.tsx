@@ -5,7 +5,6 @@ import React, { useRef, useState, useMemo, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
-import { Const } from "three/tsl";
 // import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 export default function BlackHoleSection() {
@@ -21,30 +20,30 @@ export default function BlackHoleSection() {
   );
 }
 
-const vertexShader = `
-  varying vec2 vUv;
+// const vertexShader = `
+//   varying vec2 vUv;
 
-  void main() {
-    vUv = uv;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`;
+//   void main() {
+//     vUv = uv;
+//     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+//   }
+// `;
 
-const fragmentShader = `
-  uniform sampler2D uTexture;
-  varying vec2 vUv;
+// const fragmentShader = `
+//   uniform sampler2D uTexture;
+//   varying vec2 vUv;
 
-  void main() {
-    if (vUv.y > 0.5) discard; // hide top half
-    vec4 texColor = texture2D(uTexture, vUv);
-    if (texColor.a < 0.1) discard;
-    gl_FragColor = texColor;
-  }
-`;
+//   void main() {
+//     if (vUv.y > 0.5) discard; // hide top half
+//     vec4 texColor = texture2D(uTexture, vUv);
+//     if (texColor.a < 0.1) discard;
+//     gl_FragColor = texColor;
+//   }
+// `;
 
 function BlackHole() {
-  const disk = useRef<THREE.Mesh>(null!);
-  const [clicked, setClicked] = useState(false);
+  // const disk = useRef<THREE.Mesh>(null!);
+  // const [clicked, setClicked] = useState(false);
 
   // useFrame(() => {
   //   if (disk.current) {
@@ -66,7 +65,7 @@ function BlackHole() {
   });
 
   const meshRef = useRef<THREE.Mesh>(null);
-  useFrame((_, delta) => {
+  useFrame(() => {
     if (meshRef.current) {
       // meshRef.current.rotation.z -= delta * 0.9; // adjust rotation speed
       if (meshRef.current) {
