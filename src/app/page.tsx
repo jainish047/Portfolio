@@ -74,11 +74,11 @@ export default function Home() {
             from default
           </li>
           <li>
-            <strong>Default:</strong> Your system's standard font
+            <strong>Default:</strong> Your system&aposs standard font
           </li>
-          <li>If all look the same, fonts aren't loading</li>
+          <li>If all look the same, fonts aren&apost loading</li>
           <li>
-            If inline styles work but Tailwind classes don't, there's a config
+            If inline styles work but Tailwind classes don&apost, there&aposs a config
             issue
           </li>
         </ul>
