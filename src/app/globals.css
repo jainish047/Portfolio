@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Why Tailwind v4 Doesn't Auto-Generate Font Utilities
+This is not just you - it's a breaking change in Tailwind CSS v4. Here's what changed:
+
+Tailwind v3 (Old Behavior):
+This would automatically generate .font-orbitron utility
+theme: {
+  fontFamily: {
+    orbitron: ['var(--font-orbitron)']
+  }
+}
+
+Tailwind v4 (New Behavior):
+
+Changed configuration syntax and utility generation
+Font utilities are handled differently
+Some configurations that worked in v3 don't auto-generate in v4
+This affects everyone upgrading to v4
+
+Will It Work the Same as Before?
+YES! Your manual @layer utilities approach works exactly like the old auto-generated utilities. */
+
+/* Font utilities */
+@layer utilities {
+  .font-orbitron {
+    font-family: var(--font-orbitron);
+  }
+
+  .font-rajdhani {
+    font-family: var(--font-rajdhani);
+  }
+}
+
+/* Custom component classes */
+/* @layer components { */
+
+  /* Orbitron variants  */
+  /* .orbitron-heading {
+    @apply font-orbitron font-bold text-3xl text-white;
+  }
+
+  .orbitron-subheading {
+    @apply font-orbitron font-semibold text-xl text-gray-300;
+  }
+
+  .orbitron-title {
+    @apply font-orbitron font-black text-4xl text-white tracking-wide;
+  }
+
+  .orbitron-button {
+    @apply font-orbitron font-semibold text-lg text-blue-400 hover:text-blue-300;
+  } */
+
+  /* Rajdhani variants  */
+  /* .rajdhani-body {
+    @apply font-rajdhani text-base text-gray-200 leading-relaxed;
+  }
+
+  .rajdhani-caption {
+    @apply font-rajdhani text-sm text-gray-400;
+  }
+
+  .rajdhani-large {
+    @apply font-rajdhani text-2xl font-medium text-white;
+  } */
+
+  /* Space-themed combinations */
+  /* .space-hero {
+    @apply font-orbitron font-black text-5xl text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text;
+  }
+
+  .space-card-title {
+    @apply font-orbitron font-bold text-xl text-cyan-400;
+  }
+
+  .space-description {
+    @apply font-rajdhani text-lg text-gray-300 leading-relaxed;
+  }
+} */

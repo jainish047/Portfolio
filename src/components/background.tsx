@@ -258,7 +258,7 @@ export default function SpaceBackground() {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 0, // behind content
+        zIndex: 5, // behind content
         pointerEvents: "none", // disable mouse interaction
         overflow: "hidden",
       }}

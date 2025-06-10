@@ -1,24 +1,85 @@
 // components/BlackHoleButton.tsx
 "use client";
 
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
+import { motion, AnimatePresence } from "framer-motion";
+import { Orbit, MessageSquareText, Code, User } from "lucide-react";
 // import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 export default function BlackHoleSection() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="fixed top-4 right-4 w-60 h-60 z-50 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 3] }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[5, 5, 5]} />
-        <BlackHole />
-        <OrbitControls enablePan={false} enableZoom={false} />
-      </Canvas>
+    <div className="fixed top-1 right-1 md:top-4 md:right-4 w-20 h-20 z-50 pointer-events-none cursor-pointer">
+      <button
+        className="w-full h-full  rounded-full flex items-center justify-center flex-col"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <Canvas camera={{ position: [0, 0, 3] }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[5, 5, 5]} />
+          <BlackHole />
+          <OrbitControls enablePan={false} enableZoom={false} />
+        </Canvas>
+        <div className="text-white text-xs">Menu</div>
+      </button>
+      {/* Hawking radiation beam + menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mt-2 w-1 bg-gradient-to-b from-white/80 via-blue-500 to-purple-600 rounded-full"
+          >
+            <motion.ul
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={beamVariants}
+              className="space-y-4 py-4 flex flex-col items-center"
+            >
+              <MenuItem icon={<User />} label="About" />
+              <MenuItem icon={<Code />} label="Projects" />
+              <MenuItem icon={<MessageSquareText />} label="Contact" />
+              <MenuItem icon={<Orbit />} label="Blog" />
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
+function MenuItem({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <motion.li
+      className="flex flex-col items-center text-white cursor-pointer hover:scale-110 transition-transform"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shadow-md">
+        {icon}
+      </div>
+      <span className="text-xs mt-1">{label}</span>
+    </motion.li>
+  );
+}
+
+const beamVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 // const vertexShader = `
 //   varying vec2 vUv;
@@ -80,8 +141,8 @@ function BlackHole() {
     }
   });
 
-  const geometry =   useMemo(() => {
-    const width = 3;
+  const geometry = useMemo(() => {
+    const width = 4.5;
     // const height = 4;
     const height = width; // height of the black hole
     const R = height / 2;
@@ -108,7 +169,7 @@ function BlackHole() {
       r
     );
     console.log("width:", width, "height:", height);
-    const geo = new THREE.PlaneGeometry(width, height, 256, 256);
+    const geo = new THREE.PlaneGeometry(width, height, 32, 32);
     const pos = geo.attributes.position;
 
     const yCompression = 1;
@@ -183,7 +244,7 @@ function BlackHole() {
     texture2.wrapS = THREE.ClampToEdgeWrapping;
     texture2.wrapT = THREE.ClampToEdgeWrapping;
 
-      texture2.needsUpdate = true;
+    texture2.needsUpdate = true;
   }, [texture2]);
 
   // Rotate texture on each frame
@@ -206,7 +267,7 @@ function BlackHole() {
   // );
 
   // Create geometry for bottom half of plane
-  const geometry2 = new THREE.PlaneGeometry(3, 3, 2, 2);
+  const geometry2 = new THREE.PlaneGeometry(4.5, 4.5, 2, 2);
   const pos = geometry2.attributes.position;
   const midY = 0;
   for (let i = 0; i < pos.count; i++) {
@@ -219,14 +280,14 @@ function BlackHole() {
   geometry.computeVertexNormals();
 
   return (
-    <>
+    <group raycast={() => null}>
       {/* Event Horizon */}
       <mesh>
-        <sphereGeometry args={[0.5, 64, 64]} />
+        <sphereGeometry args={[0.8, 64, 64]} />
         <meshStandardMaterial color="black" />
       </mesh>
 
-      <mesh ref={meshRef} geometry={geometry} rotation={[-Math.PI/9, 0, 0]}>
+      <mesh ref={meshRef} geometry={geometry} rotation={[-Math.PI / 9, 0, 0]}>
         <meshBasicMaterial
           map={texture}
           transparent
@@ -237,7 +298,7 @@ function BlackHole() {
         />
       </mesh>
 
-      <mesh geometry={geometry2} rotation={[Math.PI/9, 0, 0]}>
+      <mesh geometry={geometry2} rotation={[Math.PI / 9, 0, 0]}>
         <meshBasicMaterial
           ref={materialRef}
           map={texture}
@@ -323,6 +384,6 @@ function BlackHole() {
           roughness={0.2}
         />
       </mesh> */}
-    </>
+    </group>
   );
 }
