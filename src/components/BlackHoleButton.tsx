@@ -1,118 +1,38 @@
 // components/BlackHoleButton.tsx
 "use client";
 
-import React, { useRef, useMemo, useEffect, useState } from "react";
+import React, {
+  useRef,
+  useMemo,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
-import { motion, AnimatePresence } from "framer-motion";
-import { Orbit, MessageSquareText, Code, User } from "lucide-react";
+import { RadiationCanvas } from "@/components/RadiationCanvas";
 // import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
-export default function BlackHoleSection() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <div className="fixed top-1 right-1 md:top-4 md:right-4 w-20 h-20 z-50 pointer-events-none cursor-pointer">
-      <button
-        className="w-full h-full  rounded-full flex items-center justify-center flex-col"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <Canvas camera={{ position: [0, 0, 3] }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[5, 5, 5]} />
-          <BlackHole />
-          <OrbitControls enablePan={false} enableZoom={false} />
-        </Canvas>
-        <div className="text-white text-xs">Menu</div>
-      </button>
-      {/* Hawking radiation beam + menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mt-2 w-1 bg-gradient-to-b from-white/80 via-blue-500 to-purple-600 rounded-full"
-          >
-            <motion.ul
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={beamVariants}
-              className="space-y-4 py-4 flex flex-col items-center"
-            >
-              <MenuItem icon={<User />} label="About" />
-              <MenuItem icon={<Code />} label="Projects" />
-              <MenuItem icon={<MessageSquareText />} label="Contact" />
-              <MenuItem icon={<Orbit />} label="Blog" />
-            </motion.ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+interface BlackHoleSectionProps {
+  onClick: () => void;
+  active: boolean;
 }
 
-function MenuItem({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <motion.li
-      className="flex flex-col items-center text-white cursor-pointer hover:scale-110 transition-transform"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shadow-md">
-        {icon}
-      </div>
-      <span className="text-xs mt-1">{label}</span>
-    </motion.li>
-  );
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  alpha: number;
 }
 
-const beamVariants = {
-  hidden: { opacity: 0, y: -10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+interface BlackHoleProps {
+  // onClick: () => void;
+  radiating: boolean;
+}
 
-// const vertexShader = `
-//   varying vec2 vUv;
-
-//   void main() {
-//     vUv = uv;
-//     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-//   }
-// `;
-
-// const fragmentShader = `
-//   uniform sampler2D uTexture;
-//   varying vec2 vUv;
-
-//   void main() {
-//     if (vUv.y > 0.5) discard; // hide top half
-//     vec4 texColor = texture2D(uTexture, vUv);
-//     if (texColor.a < 0.1) discard;
-//     gl_FragColor = texColor;
-//   }
-// `;
-
-function BlackHole() {
-  // const disk = useRef<THREE.Mesh>(null!);
-  // const [clicked, setClicked] = useState(false);
-
-  // useFrame(() => {
-  //   if (disk.current) {
-  //     // Rotate around tilted local axis
-  //     disk.current.rotation.y += 0.0;
-  //   }
-  // });
-
+const BlackHole: React.FC<BlackHoleProps> = ({ radiating }) => {
   const texture = useLoader(THREE.TextureLoader, "/accretion-disk8.png");
   // set the pivot for rotation to the center of the UV space
   texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
@@ -249,22 +169,8 @@ function BlackHole() {
 
   // Rotate texture on each frame
   useFrame(() => {
-    texture2.rotation += 0.005; // adjust speed here
+    texture2.rotation += radiating ? 0.005 : 0.01; // adjust speed here
   });
-
-  // const shaderMaterial = useMemo(
-  //   () =>
-  //     new THREE.ShaderMaterial({
-  //       vertexShader,
-  //       fragmentShader,
-  //       uniforms: {
-  //         uTexture: { value: texture2 },
-  //       },
-  //       transparent: true,
-  //       side: THREE.DoubleSide,
-  //     }),
-  //   [texture2]
-  // );
 
   // Create geometry for bottom half of plane
   const geometry2 = new THREE.PlaneGeometry(4.5, 4.5, 2, 2);
@@ -279,8 +185,24 @@ function BlackHole() {
   pos.needsUpdate = true;
   geometry.computeVertexNormals();
 
+  // change size of bh with window size
+  const [scale, setScale] = useState(1);
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) setScale(0.6); // Mobile
+      else if (width < 768) setScale(0.65);
+      else if (width < 1024) setScale(0.8); // Tablet
+      else setScale(1); // Desktop
+    };
+
+    handleResize(); // Initial call
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <group raycast={() => null}>
+    <group scale={scale} raycast={() => null}>
       {/* Event Horizon */}
       <mesh>
         <sphereGeometry args={[0.8, 64, 64]} />
@@ -306,84 +228,64 @@ function BlackHole() {
           side={THREE.DoubleSide}
         />
       </mesh>
-
-      {/* Accretion Disk */}
-      {/* <group rotation={[0, 0, 0]}> */}
-      {/* <group rotation={[Math.PI / 10, 0, 0]}>
-        <mesh
-          ref={disk}
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={[1, 1, 0.1]}
-          onClick={() => setClicked(!clicked)}
-        >
-          <torusGeometry args={[0.65, 0.2, 32, 100]} />
-          <meshStandardMaterial
-            color="orange"
-            emissive="red"
-            emissiveIntensity={1.5}
-            metalness={1}
-            roughness={0.2}
-          />
-        </mesh>
-      </group> */}
-      {/* </group> */}
-
-      {/* <mesh ref={meshRef} rotation={[0, 0, 0]}>
-        <planeGeometry args={[3, 3, 64, 64]} />
-        <meshBasicMaterial
-          map={texture}
-          transparent
-          opacity={0.9}
-          side={THREE.DoubleSide}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh> */}
-
-      {/* <mesh ref={meshRef}>
-        <primitive object={geometry} attach="geometry" />
-        <meshBasicMaterial
-          map={texture}
-          transparent
-          opacity={0.85}
-          side={THREE.DoubleSide}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh> */}
-
-      {/* <mesh
-        ref={disk}
-        rotation={[0, 0, 0]} // facing front directly, change if needed
-        scale={[1, 1, 0.1]} // make disk flatter
-        onClick={() => setClicked(!clicked)}
-      >
-        <torusGeometry args={[0.56, 0.1, 32, 100]} />
-        <meshBasicMaterial
-          map={texture}
-          transparent
-          opacity={0.85}
-          side={THREE.DoubleSide}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
-      </mesh> */}
-
-      {/* <mesh
-        ref={disk}
-        rotation={[0, 0, 0]}
-        scale={[1, 1, 0.1]}
-        onClick={() => setClicked(!clicked)}
-      >
-        <torusGeometry args={[0.56, 0.1, 32, 100]} />
-        <meshStandardMaterial
-          color="orange"
-          emissive="red"
-          emissiveIntensity={1.5}
-          metalness={1}
-          roughness={0.2}
-        />
-      </mesh> */}
     </group>
   );
-}
+};
+
+const BlackHoleSection: React.FC<BlackHoleSectionProps> = ({
+  active,
+  onClick,
+}) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [origins, setOrigins] = useState<{ x: number; y: number }[]>([]);
+
+  const emitterOffset = -20; // Distance from the center of the black hole to the emitters
+
+  const updateOrigins = () => {
+    if (wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      setOrigins([
+        { x: cx, y: cy - emitterOffset },
+        { x: cx, y: cy + emitterOffset },
+      ]);
+    }
+  };
+
+  useEffect(() => {
+    updateOrigins();
+    window.addEventListener("resize", updateOrigins);
+    return () => window.removeEventListener("resize", updateOrigins);
+  }, [emitterOffset]);
+
+  return (
+    <>
+      {/* <div className="border border-amber-400"> */}
+      <RadiationCanvas active={active} origins={origins} />
+      <div
+        ref={wrapperRef}
+        // className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32"
+      >
+        <button
+          className="w-fit flex items-center justify-center z-50 cursor-pointer"
+          onClick={() => {
+            console.log("bh clicked");
+            onClick();
+          }}
+        >
+          <Canvas camera={{ position: [0, 0, 3] }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[5, 5, 5]} />
+            <BlackHole radiating={active} />
+            <OrbitControls enablePan={false} enableZoom={false} />
+          </Canvas>
+          {/* <div className="text-white text-xs">Menu</div> */}
+        </button>
+      </div>
+      {/* </div> */}
+    </>
+  );
+};
+
+export default BlackHoleSection;

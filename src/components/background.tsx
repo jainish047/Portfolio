@@ -3,6 +3,8 @@
 import React, { useRef, useState, useEffect, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import Image from "next/image";
+
 
 interface Star {
   position: THREE.Vector3;
@@ -258,13 +260,20 @@ export default function SpaceBackground() {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 5, // behind content
+        zIndex: -20, // behind content
         pointerEvents: "none", // disable mouse interaction
         overflow: "hidden",
       }}
     >
+      <Image
+        src="/7.png"
+        alt="Nebula background"
+        fill
+        style={{ objectFit: "cover", zIndex: -30 }}
+        priority
+      />
       <Canvas
-        className="fixed inset-0 -z-10 pointer-events-none h-screen w-screen"
+        className="fixed inset-0 pointer-events-none h-screen w-screen"
         camera={{ position: [0, 0, 50], fov: 75 }}
         gl={{ alpha: true }}
       >

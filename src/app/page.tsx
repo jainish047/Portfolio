@@ -3,7 +3,7 @@ export default function Home() {
     <div className="min-h-screen p-8 space-y-6">
       <h1 className="font-orbitron font-extrabold text-white text-3xl">This is Orbitron</h1>
 
-      <p className="font-rajdhani text-white text-xl">This is Rajdhani</p>
+      <p className="font-rajdhani text-white text-3xl">rThis is Rajdhani</p>
 
       {/* Debug Section */}
       <div className="bg-yellow-900/50 p-6 border border-yellow-400 rounded">

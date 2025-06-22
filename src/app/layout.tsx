@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Image from "next/image";
 import SpaceBackground from "@/components/background";
-import BlackHoleButton from "@/components/BlackHoleButton";
+import GalacticMenu from "@/components/GalacticMenu";
 import { Orbitron, Rajdhani } from "next/font/google";
 
 const orbitron = Orbitron({
@@ -30,6 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     // <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} antialiased`}>
     // <html lang="en">
@@ -38,22 +37,12 @@ export default function RootLayout({
       className={`font-rajdhani antialiased ${rajdhani.variable} ${orbitron.variable}`}
     >
       <body className="m-0 p-0 overflow-x-hidden">
-        {/* 1) Nebula image */}
-        <div className="fixed inset-0">
-          <Image
-            src="/7.png"
-            alt="Nebula background"
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </div>
-        {/* 2) Three.js canvas */}
+        
         <SpaceBackground />
-        <BlackHoleButton />
+        <GalacticMenu />
 
         {/* 3) Your scrolling content */}
-        <main className="relative z-10">{children}</main>
+        <main className="relative z-0">{children}</main>
       </body>
     </html>
   );
