@@ -1,7 +1,7 @@
 /* components/RadiationCanvas.tsx */
 "use client";
 
-import { div } from "framer-motion/client";
+// import { div } from "framer-motion/client";
 import React, { useRef, useEffect } from "react";
 
 interface Particle {

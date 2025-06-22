@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { SatelliteDish, Earth, Rocket, Brain, SignalHigh, FileCode2 } from "lucide-react";
+import { SatelliteDish, Earth, Rocket, Brain, FileCode2 } from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
@@ -20,9 +20,9 @@ interface Props {
 export const VerticalMenuBar: React.FC<Props> = ({ onClose }) => {
   const [visible, setVisible] = useState(true);
 
-  const handleClose = () => {
-    setVisible(false);
-  };
+  // const handleClose = () => {
+  //   setVisible(false);
+  // };
 
   // Wait for exit animation to finish, then call parent onClose
   const handleAnimationComplete = () => {

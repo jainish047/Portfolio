@@ -20,7 +20,7 @@ export default function Loading() {
 }
 
 function WarpJumpEffect() {
-  const cameraRef = useRef<THREE.PerspectiveCamera>(null);
+  // const cameraRef = useRef<THREE.PerspectiveCamera>(null);
 
   useFrame(({ camera }, delta) => {
     camera.position.z -= delta * 15; // Simulate forward motion

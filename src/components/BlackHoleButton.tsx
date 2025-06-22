@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useEffect,
   useState,
-  useCallback,
+  // useCallback,
 } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -19,13 +19,13 @@ interface BlackHoleSectionProps {
   active: boolean;
 }
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  alpha: number;
-}
+// interface Particle {
+//   x: number;
+//   y: number;
+//   vx: number;
+//   vy: number;
+//   alpha: number;
+// }
 
 interface BlackHoleProps {
   // onClick: () => void;
