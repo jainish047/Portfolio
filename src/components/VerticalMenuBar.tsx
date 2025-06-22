@@ -27,6 +27,7 @@ export const VerticalMenuBar: React.FC<Props> = ({ onClose }) => {
   // Wait for exit animation to finish, then call parent onClose
   const handleAnimationComplete = () => {
     if (!visible) {
+      setVisible(true);
       onClose();
     }
   };

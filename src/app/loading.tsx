@@ -2,8 +2,8 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import { useRef } from "react";
-import * as THREE from "three";
+// import { useRef } from "react";
+// import * as THREE from "three";
 
 export default function Loading() {
   return (
