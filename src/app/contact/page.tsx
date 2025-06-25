@@ -40,7 +40,7 @@ const ContactPage = () => {
               📧 Email
             </a>
             <a
-              href="https://leetcode.com/jainish047"
+              href="https://leetcode.com/jainish47"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-orange-800 bg-orange-600/30 hover:bg-orange-700 px-6 py-3 rounded-full shadow text-white transition font-bold col-span-1"
@@ -48,7 +48,7 @@ const ContactPage = () => {
               🧩 LeetCode
             </a>
             <a
-              href="https://codeforces.com/profile/jainish047"
+              href="https://codeforces.com/profile/JD47"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-red-800 bg-red-600/30 hover:bg-red-700 px-6 py-3 rounded-full shadow text-white transition font-bold col-span-1"
@@ -56,7 +56,7 @@ const ContactPage = () => {
               ⚔️ Codeforces
             </a>
             <a
-              href="https://www.codechef.com/users/jainish047"
+              href="https://www.codechef.com/users/jainish_47"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-gray-800 bg-gray-800/30 hover:bg-gray-900 px-6 py-3 rounded-full shadow text-white transition font-bold col-span-1"
