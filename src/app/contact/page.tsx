@@ -10,10 +10,10 @@ const ContactPage = () => {
 
       <main className="min-h-screen text-white px-6 py-16">
         <section className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-6">📬 Let's Connect</h1>
+          <h1 className="text-4xl font-bold mb-6">📬 Let&apos;s Connect</h1>
           <p className="text-lg text-gray-300 mb-10">
-            Whether it's collaboration, freelance opportunities, or tech talk —
-            I'm always open to meaningful conversations. Reach out via:
+            Whether it&apos;s collaboration, freelance opportunities, or tech talk —
+            I&apos;m always open to meaningful conversations. Reach out via:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 sm:flex-row justify-center gap-6 text-lg mb-4">
