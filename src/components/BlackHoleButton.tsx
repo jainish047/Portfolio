@@ -274,7 +274,10 @@ const BlackHoleSection: React.FC<BlackHoleSectionProps> = ({
             onClick();
           }}
         >
-          <Canvas camera={{ position: [0, 0, 3] }}>
+          <Canvas
+            camera={{ position: [0, 0, 3] }}
+            style={{ pointerEvents: active ? "auto" : "none", zIndex: 0 }}
+          >
             <ambientLight intensity={0.5} />
             <pointLight position={[5, 5, 5]} />
             <BlackHole radiating={active} />

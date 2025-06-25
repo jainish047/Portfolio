@@ -1,88 +1,179 @@
-export default function Home() {
+import React from "react";
+import Link from "next/link";
+import projectList from "@/data/projectList";
+import ProjectCard from "@/components/ProjectCard";
+
+const skills = ["React", "Next.js", "Node.js", "Express", "PostgreSQL", "DSA"];
+
+const milestones = [
+  {
+    year: "2021",
+    title: "Started B.Tech @ GCET (IT)",
+  },
+  {
+    year: "2024",
+    title: "Won SIH for ZenSkills Platform",
+  },
+  {
+    year: "2025",
+    title: "Built IELTS AI Evaluator App",
+  },
+];
+
+const Projects = [...projectList.slice(0, 3)];
+
+const HomePage = () => {
   return (
-    <div className="min-h-screen p-8 space-y-6">
-      <h1 className="font-orbitron font-extrabold text-white text-3xl">This is Orbitron</h1>
-
-      <p className="font-rajdhani text-white text-3xl">rThis is Rajdhani</p>
-
-      {/* Debug Section */}
-      <div className="bg-yellow-900/50 p-6 border border-yellow-400 rounded">
-        <h2 className="text-yellow-400 font-bold mb-4 text-xl">
-          🔍 Font Debug Test
-        </h2>
-
-        {/* Test 1: Orbitron */}
-        <div className="mb-4 p-4 bg-blue-900/30 border border-blue-400 rounded">
-          <p className="text-blue-300 text-sm mb-2">
-            Should be ORBITRON (futuristic, tech-like):
+    <div className="text-white mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 items-center max-w-7xl px-4 py-8">
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 col-span-1 md:col-span-3">
+        <h1 className="text-5xl md:text-6xl font-orbitron font-bold mb-4">
+          Jainish Patel
+        </h1>
+        <div className="max-w-2xl mb-8">
+          <p className="text-xl md:text-2xl font-orbitron font-bold text-gray-300 mb-6">
+            Web Developer, Problem Solver & AI/ML Explorer
           </p>
-          <h1 className="font-orbitron font-bold text-3xl text-white">
-            GALACTIC PORTFOLIO - Orbitron Font
-          </h1>
-        </div>
-
-        {/* Test 2: Rajdhani */}
-        <div className="mb-4 p-4 bg-green-900/30 border border-green-400 rounded">
-          <p className="text-green-300 text-sm mb-2">
-            Should be RAJDHANI (clean, modern):
+          <p className="font-bold">
+            Blending clean code with intelligent systems.
           </p>
-          <p className="font-rajdhani text-2xl text-white">
-            Welcome to my space - Rajdhani Font
+          <p className="font-bold">
+            On a mission to craft meaningful software across the web and AI
+            universe.
           </p>
         </div>
-
-        {/* Test 3: Default */}
-        <div className="mb-4 p-4 bg-red-900/30 border border-red-400 rounded">
-          <p className="text-red-300 text-sm mb-2">Default system font:</p>
-          <p className="text-2xl text-white">
-            Default system font for comparison
-          </p>
+        <div className="flex gap-4">
+          <Link href="/projects">
+            <button className="border-2 border-purple-700 bg-purple-600/50 hover:bg-purple-700 text-white px-6 py-2 rounded-full shadow hover:cursor-pointer">
+              View Projects 🚀
+            </button>
+          </Link>
+          <Link href="/about">
+            <button className="border-2 border-blue-600 bg-blue-600/50 hover:bg-blue-700 text-white px-6 py-2 rounded-full shadow hover:cursor-pointer">
+              About Me
+            </button>
+          </Link>
         </div>
+      </section>
 
-        {/* Test 4: Inline styles to force fonts */}
-        <div className="mb-4 p-4 bg-purple-900/30 border border-purple-400 rounded">
-          <p className="text-purple-300 text-sm mb-2">
-            Forced with inline styles:
-          </p>
-          <h2
-            style={{ fontFamily: '"Orbitron"' }}
-            className="text-2xl text-white mb-2"
-          >
-            Inline Orbitron Font
-            Inline Rajdhani Font
+      {/* Skills Section */}
+      <section className="w-full h-full p-6 backdrop-blur-md border-2 border-blue-800 bg-black/30 rounded-xl col-span-1 md:col-span-2">
+        <div className="flex justify-center md:justify-between items-center mb-8">
+          <h2 className="text-3xl font-semibold text-center">
+            My Core Tech Pillars
           </h2>
-          <h2
-            style={{ fontFamily: '"Rajdhani"' }}
-            className="text-2xl text-white"
+          <Link
+            href="/about"
+            className="md:block hidden text-center text-blue-400 underline hover:text-blue-300"
           >
-            Inline Orbitron Font
-            Inline Rajdhani Font
-          </h2>
+            Explore My Full Skill Stack →
+          </Link>
         </div>
-      </div>
 
-      {/* Instructions */}
-      <div className="bg-gray-800 p-4 rounded">
-        <h3 className="text-white font-bold mb-2">What to look for:</h3>
-        <ul className="text-gray-300 space-y-1 list-disc ml-6">
-          <li>
-            <strong>Orbitron:</strong> Should look futuristic, tech-like, with
-            unique letter shapes
-          </li>
-          <li>
-            <strong>Rajdhani:</strong> Should look clean and modern, different
-            from default
-          </li>
-          <li>
-            <strong>Default:</strong> Your system&aposs standard font
-          </li>
-          <li>If all look the same, fonts aren&apost loading</li>
-          <li>
-            If inline styles work but Tailwind classes don&apost, there&aposs a config
-            issue
-          </li>
-        </ul>
-      </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Web Dev */}
+          <div className="bg-purple-800/30 p-4 rounded-xl shadow-md hover:scale-[1.02] transition-transform">
+            <h3 className="text-xl font-bold mb-4">💻 Web Development</h3>
+            <ul className="space-y-2 text-gray-300 list-disc list-inside">
+              <li>React</li>
+              <li>Next.js</li>
+              <li>Tailwind CSS</li>
+              <li>Node.js</li>
+              <li>Express.js</li>
+            </ul>
+          </div>
+
+          {/* Database / Backend */}
+          <div className="bg-blue-800/30 p-4 rounded-xl shadow-md hover:scale-[1.02] transition-transform">
+            <h3 className="text-xl font-bold mb-4">🗄️ Backend & Databases</h3>
+            <ul className="space-y-2 text-gray-300 list-disc list-inside">
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+              <li>Prisma ORM</li>
+              <li>REST APIs</li>
+            </ul>
+          </div>
+
+          {/* DSA / CS Fundamentals */}
+          <div className="bg-indigo-800/30 p-4 rounded-xl shadow-md hover:scale-[1.02] transition-transform">
+            <h3 className="text-xl font-bold mb-4">🧠 CS Fundamentals</h3>
+            <ul className="space-y-2 text-gray-300 list-disc list-inside">
+              <li>Data Structures & Algorithms</li>
+              <li>C++ STL</li>
+              <li>OOP Concepts</li>
+              <li>Problem Solving</li>
+            </ul>
+          </div>
+        </div>
+
+        <Link
+          href="/about"
+          className="block md:hidden text-center mt-8 text-blue-400 underline hover:text-blue-300"
+        >
+          Explore My Full Skill Stack →
+        </Link>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="h-full w-full p-6 backdrop-blur-md border-2 border-blue-800 bg-black/30 rounded-xl col-span-1 md:col-span-1">
+        <div className="flex justify-center md:justify-between items-center mb-8">
+          <h2 className="text-3xl font-semibold">My Journey</h2>
+          <Link
+            href="/about"
+            className="md:block hidden text-blue-400 underline hover:text-blue-300"
+          >
+            View Full Timeline →
+          </Link>
+        </div>
+        <div className="space-y-4 border-l-2 border-purple-500 pl-4">
+          {milestones.map((milestone, idx) => (
+            <div key={idx}>
+              <p className="text-lg font-semibold">{milestone.year}</p>
+              <p className="text-gray-300">{milestone.title}</p>
+            </div>
+          ))}
+        </div>
+        <Link
+          href="/about"
+          className="text-blue-400 underline hover:text-blue-300 mt-4 md:hidden block"
+        >
+          View Full Timeline →
+        </Link>
+      </section>
+
+      {/* Featured Projects */}
+      <section
+        id="projects"
+        className="w-full py-6 px-2 not-last:md:p-6 backdrop-blur-md border-2 border-blue-800 bg-black-900/30 rounded-xl col-span-1 sm:col-span-2 md:col-span-3"
+      >
+        <div className="flex justify-center md:justify-between items-center mb-8">
+          <h2 className="text-3xl font-semibold">Featured Projects</h2>
+          <Link
+            href="/projects"
+            className="hidden md:block text-center text-blue-400 underline hover:text-blue-300"
+          >
+            Explore All Projects →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {Projects.map((project, index) => {
+            return <ProjectCard project={project} key={index} />;
+          })}
+        </div>
+        <Link
+          href="/projects"
+          className="block md:hidden text-center mt-6 text-blue-400 underline hover:text-blue-300"
+        >
+          Explore All Projects →
+        </Link>
+      </section>
+
+      {/* Footer */}
+      <footer className="col-span-1 md:col-span-3 text-center w-full text-sm text-gray-400 mt-16 mb-8">
+        © 2025 Jainish Patel. Made with 💜 in the Milky Way.
+      </footer>
     </div>
   );
-}
+};
+
+export default HomePage;

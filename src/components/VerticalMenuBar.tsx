@@ -8,7 +8,7 @@ import Link from "next/link";
 const navItems = [
   { name: "Command Center", icon: Earth, href: "/" },
   { name: "Missions", icon: Rocket, href: "/projects" },
-  { name: "Logs", icon: Brain, href: "/about" },
+  { name: "Profile", icon: Brain, href: "/about" },
   { name: "Transmission", icon: SatelliteDish, href: "/contact" },
   { name: "Data Core", icon: FileCode2, href: "/resume" }, // Optional
 ];

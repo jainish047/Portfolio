@@ -1,0 +1,71 @@
+export const languages = {
+    javascript:"JavaScript",
+    typescript:"TypeScript",
+    cplusplus:"C++",
+}
+
+export const tags = {
+    SIH2024Winner: "SIH 2024 Winner",
+    nlp: "NLP",
+    blockchain: "Blockchain",
+    hackathonProject: "Hackathon Project",
+    // gameDevelopment: "Game Development",
+    webDevelopment: "Web Development",
+    ai: "AI",
+    dsa: "Data Structures and Algorithms",
+    SIH2024Problem: "SIH 2024 Problem Statement",
+}
+
+export type techologyType = {
+    name: string;
+    imageUrl: string
+}
+
+export const technologyIcons: Record<string, { name: string; imageUrl: string }> = {
+  "Reactjs": { name: "React.js", imageUrl: "/logos/react.svg" },
+  "Nextjs": { name: "Next.js", imageUrl: "/logos/next.svg" },
+  "Nodejs": { name: "Node.js", imageUrl: "/logos/node.svg" },
+  "Express.js": { name: "Express.js", imageUrl: "/logos/express.svg" },
+  "MongoDB": { name: "MongoDB", imageUrl: "/logos/mongodb.svg" },
+  "PostgreSQL": { name: "PostgreSQL", imageUrl: "/logos/postgresql.svg" },
+  "Firebase": { name: "Firebase", imageUrl: "/logos/firebase.svg" },
+  "TypeScript": { name: "TypeScript", imageUrl: "/logos/typescript.svg" },
+  "JavaScript": { name: "JavaScript", imageUrl: "/logos/javascript.svg" },
+  "TailwindCSS": { name: "Tailwind CSS", imageUrl: "/logos/tailwindcss.svg" },
+  "Bootstrap": { name: "Bootstrap", imageUrl: "/logos/bootstrap.svg" },
+  "FramerMotion": { name: "Framer Motion", imageUrl: "/logos/framer.svg" },
+  "StyledComponents": { name: "Styled Components", imageUrl: "" },
+  "PostCSS": { name: "PostCSS", imageUrl: "/logos/postcss.svg" },
+  "ReduxToolkit": { name: "Redux Toolkit", imageUrl: "/logos/redux.svg" },
+  "ReactRouter": { name: "React Router", imageUrl: "/logos/reactrouter.svg" },
+  "Socket.IO": { name: "Socket.IO", imageUrl: "/logos/socketio.svg" },
+  "Formik": { name: "Formik", imageUrl: "/logos/formik.svg" },
+  "Yup": { name: "Yup", imageUrl: "" },
+  "Prisma": { name: "Prisma", imageUrl: "/logos/prisma.svg" },
+  "Prisma ORM": { name: "Prisma ORM", imageUrl: "" },
+  "Mongoose": { name: "Mongoose", imageUrl: "/logos/mongoose.svg" },
+  "Cloudinary": { name: "Cloudinary", imageUrl: "/logos/cloudinary.svg" },
+  "VideoSDK": { name: "VideoSDK", imageUrl: "" },
+  "AssemblyAI": { name: "AssemblyAI", imageUrl: "" },
+  "OpenAI": { name: "OpenAI", imageUrl: "/logos/openai.svg" },
+  "HuggingFace API": { name: "HuggingFace API", imageUrl: "/logos/huggingface.svg" },
+  "Grok NLP": { name: "Grok NLP", imageUrl: "" },
+  "Speech Recognition API": { name: "Speech Recognition API", imageUrl: "" },
+  "Axios": { name: "Axios", imageUrl: "/logos/axios.svg" },
+  "Chartjs": { name: "Chart.js", imageUrl: "/logos/chartjs.svg" },
+  "bcrypt": { name: "bcrypt", imageUrl: "" },
+  "bcryptjs": { name: "bcryptjs", imageUrl: "" },
+  "passport": { name: "passport", imageUrl: "/logos/passport.svg" },
+  "JSON Web Token (JWT)": { name: "JSON Web Token (JWT)", imageUrl: "/logos/jwt.svg" },
+  "Nodemailer": { name: "Nodemailer", imageUrl: "/logos/nodemailer.svg" },
+  "multer": { name: "multer", imageUrl: "" },
+  "cors": { name: "cors", imageUrl: "" },
+  "express-session": { name: "express-session", imageUrl: "" },
+  "express-validator": { name: "express-validator", imageUrl: "" },
+  "formidable": { name: "formidable", imageUrl: "" },
+  "bits/stdc++.h": { name: "bits/stdc++.h", imageUrl: "/logos/" },
+  "Algorithms": { name: "Algorithms", imageUrl: "/logos/" },
+  "Huffman Coding": { name: "Huffman Coding", imageUrl: "/logos/" },
+  "A* Search Algorithm": { name: "A* Search Algorithm", imageUrl: "/logos/" },
+  "cashfree": { name: "cashfree", imageUrl: "/logos/" }
+};

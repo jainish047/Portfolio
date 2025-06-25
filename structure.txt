@@ -1,105 +1,64 @@
 🔍 Page-Wise Breakdown
 🏠 Home Page (/)
-
     High-impact, scrollable one-pager style with teasers.
-
-Sections:
-
-    Hero Section
-
-        Name, tagline (e.g., “Web Developer & AI Enthusiast”)
-
-        CTA: [View Projects] [Contact Me]
-
-    Top Skills Preview
-
-        6–8 skill badges (e.g., React, Next.js, PostgreSQL, C++, etc.)
-
-        "Explore all skills →" → /about
-
-    Mini Timeline Preview
-
-        Just top 2–3 milestones (e.g., B.Tech started, SIH win, IELTS AI App)
-
-        Link to "View full timeline" → /about
-
-    Featured Projects
-
-        2–3 handpicked projects (with image + short desc)
-
-        Button → /projects
-
-    Call-to-Action Footer
-
-        “Want to work together?” → /contact
-
-        OR Download Resume link
+    Sections:
+        Hero Section
+            Name, tagline (e.g., “Web Developer & AI Enthusiast”)
+            CTA: [View Projects] [Contact Me]
+        Top Skills Preview
+            6–8 skill badges (e.g., React, Next.js, PostgreSQL, C++, etc.)
+            "Explore all skills →" → /about
+        Mini Timeline Preview
+            Just top 2–3 milestones (e.g., B.Tech started, SIH win, IELTS AI App)
+            Link to "View full timeline" → /about
+        Featured Projects
+            2–3 handpicked projects (with image + short desc)
+            Button → /projects
+        Call-to-Action Footer
+            “Want to work together?” → /contact
+            OR Download Resume link
 
 💼 Projects Page (/projects)
-
     Full list of key projects with tech stack, links, and details.
-
-Each Project Includes:
-
-    Name, image/screenshot
-
-    2–3 lines description
-
-    Tags (Next.js, Prisma, React, AI/NLP, etc.)
-
-    Live link / GitHub
-
-    Maybe a modal for full details
+    Each Project Includes:
+        Name, image/screenshot
+        2–3 lines description
+        Tags (Next.js, Prisma, React, AI/NLP, etc.)
+        Live link / GitHub
+        Maybe a modal for full details
 
 👤 About Page (/about)
 
     Tells your story, journey, and skills deeply.
-
-Sections:
-
-    Introduction
-
-        Short personal story (~2–3 paras)
-
-    Skills Table / Categories
-
-        Frontend: React, Next.js, Tailwind
-
-        Backend: Express, JWT, Prisma
-
-        AI/ML: scikit-learn, Numpy
-
-        Programming: C++, Python, Java
-
-        Tools: Git, Postman, etc.
-
-    Full Timeline
-
-        Vertical or horizontal interactive timeline
-
-        6–8 events (college, key projects, hackathons, etc.)
-
-    Resume + Extra Info
-
-        Download Resume
-
-        Link to GitHub/LinkedIn
+    Sections:
+        Introduction
+            Short personal story (~2–3 paras)
+        Skills Table / Categories
+            Frontend: React, Next.js, Tailwind
+            Backend: Express, JWT, Prisma
+            AI/ML: scikit-learn, Numpy
+            Programming: C++, Python, Java
+            Tools: Git, Postman, etc.
+        Full Timeline
+            Vertical or horizontal interactive timeline
+            6–8 events (college, key projects, hackathons, etc.)
+        Resume + Extra Info
+            Download Resume
+            Link to GitHub/LinkedIn
 
 📬 Contact Page (/contact)
-
     Clean and minimal contact interface.
 
-Includes:
+    Includes:
+        Name + Email input
+        Message box
+        Send button
+        Social links (GitHub, LinkedIn)
+        Alt: Email link → mailto:jainish.patel047@gmail.com
 
-    Name + Email input
 
-    Message box
 
-    Send button
 
-    Social links (GitHub, LinkedIn)
-
-    Alt: Email link → mailto:jainish.patel047@gmail.com
 
 🔄 Common Elements (Layout)
 
