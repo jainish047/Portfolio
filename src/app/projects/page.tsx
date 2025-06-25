@@ -40,7 +40,7 @@ const ProjectsPage = () => {
               className={`border font-bold ${
                 selectedTag === tag
                   ? "bg-purple-600 text-white border-purple-600"
-                  : "bg-transparent text-purple-600 border-purple-600"
+                  : "bg-black/20 text-purple-600 border-purple-600"
               } rounded-full px-2 hover:cursor-pointer`}
               onClick={()=>managetagClick(tag)}
             >

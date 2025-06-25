@@ -13,6 +13,7 @@ import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import { RadiationCanvas } from "@/components/RadiationCanvas";
 // import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { cn } from "@/utils/cn"; // Adjust path as needed
 
 interface BlackHoleSectionProps {
   onClick: () => void;
@@ -268,22 +269,34 @@ const BlackHoleSection: React.FC<BlackHoleSectionProps> = ({
         // className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32"
       >
         <button
-          className="w-fit flex items-center justify-center z-50 cursor-pointer"
-          onClick={() => {
-            console.log("bh clicked");
-            onClick();
-          }}
+          className={cn(
+            "group relative aspect-square w-24 sm:w-28 md:w-32 rounded-full border-2 border-white/20",
+            "flex items-center justify-center overflow-hidden",
+            "hover:ring-2 hover:ring-white/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+            "transition-all duration-300 ease-in-out shadow-lg hover:cursor-pointer"
+          )}
+          onClick={onClick}
+          aria-label="Open Project Modal"
         >
           <Canvas
             camera={{ position: [0, 0, 3] }}
-            style={{ pointerEvents: active ? "auto" : "none", zIndex: 0 }}
+            style={{
+              pointerEvents: active ? "auto" : "none",
+              zIndex: 0,
+              height: "100%",
+              width: "100%",
+            }}
           >
             <ambientLight intensity={0.5} />
             <pointLight position={[5, 5, 5]} />
             <BlackHole radiating={active} />
             <OrbitControls enablePan={false} enableZoom={false} />
           </Canvas>
-          {/* <div className="text-white text-xs">Menu</div> */}
+
+          {/* Optional hover or label text */}
+          <span className="absolute bottom-1 text-white text-xs opacity-0 group-hover:opacity-100 transition">
+            Open
+          </span>
         </button>
       </div>
       {/* </div> */}

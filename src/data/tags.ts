@@ -22,6 +22,18 @@ export type techologyType = {
 }
 
 export const technologyIcons: Record<string, { name: string; imageUrl: string }> = {
+    "C++": { name: "C++", imageUrl: "/logos/cplusplus.svg" },
+  "Python": { name: "Python", imageUrl: "/logos/python.svg" },
+  "Java": { name: "Java", imageUrl: "/logos/java.svg" },
+  "HTML": { name: "HTML", imageUrl: "/logos/html5.svg" },
+  "CSS": { name: "CSS", imageUrl: "/logos/css.svg" },
+  "Git": { name: "Git", imageUrl: "/logos/git.svg" },
+  "GitHub": { name: "GitHub", imageUrl: "/logos/github.svg" },
+  "GitLab": { name: "GitLab", imageUrl: "/logos/gitlab.svg" },
+  "Postman": { name: "Postman", imageUrl: "/logos/postman.svg" },
+  "Docker": { name: "Docker", imageUrl: "/logos/docker.svg" },
+  "Kubernetes": { name: "Kubernetes", imageUrl: "/logos/kubernetes.svg" },
+  "Vercel": { name: "Vercel", imageUrl: "/logos/vercel.svg" },
   "Reactjs": { name: "React.js", imageUrl: "/logos/react.svg" },
   "Nextjs": { name: "Next.js", imageUrl: "/logos/next.svg" },
   "Nodejs": { name: "Node.js", imageUrl: "/logos/node.svg" },

@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+// import type { Metadata } from "next";
 import "./globals.css";
 import SpaceBackground from "@/components/background";
 import GalacticMenu from "@/components/GalacticMenu";
 import { Orbitron, Rajdhani } from "next/font/google";
+import { useSelectedProjectStore } from "@/store/selectedProjectStore";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -18,16 +20,18 @@ const rajdhani = Rajdhani({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Jainish Patel - Portfolio",
-  description: "This is my portfolio website showcasing my work and skills.",
-};
+// export const metadata: Metadata = {
+//   title: "Jainish Patel - Portfolio",
+//   description: "This is my portfolio website showcasing my work and skills.",
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const selectedProject = useSelectedProjectStore((store) => store.selectedProject);
 
   return (
     // <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} antialiased`}>
@@ -39,7 +43,7 @@ export default function RootLayout({
       <body className="m-0 p-0 overflow-x-hidden">
         
         <SpaceBackground />
-        <GalacticMenu />
+        {!selectedProject && <GalacticMenu />}
 
         {/* 3) Your scrolling content */}
         <main className="relative z-0">{children}</main>

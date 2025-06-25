@@ -17,7 +17,7 @@ const ResumePage = () => {
 
           <div className="flex justify-center">
             <a
-              href="/resume/Jainish_Patel_Resume.pdf"
+              href="/personal/Jainish_Patel_Resume.pdf"
               download
               className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full shadow-md transition"
             >
@@ -28,7 +28,7 @@ const ResumePage = () => {
 
           <div className="w-full h-[80vh]">
             <iframe
-              src="/resume/Jainish_Patel_Resume.pdf"
+              src="/personal/Jainish_Patel_Resume.pdf"
               className="w-full h-full rounded-lg border border-white shadow-md"
               title="Resume Preview"
             ></iframe>
