@@ -3,7 +3,7 @@ import Link from "next/link";
 import projectList from "@/data/projectList";
 import ProjectCard from "@/components/ProjectCard";
 
-const skills = ["React", "Next.js", "Node.js", "Express", "PostgreSQL", "DSA"];
+// const skills = ["React", "Next.js", "Node.js", "Express", "PostgreSQL", "DSA"];
 
 const milestones = [
   {
