@@ -188,19 +188,19 @@ const BlackHole: React.FC<BlackHoleProps> = ({ radiating }) => {
 
   // change size of bh with window size
   const [scale, setScale] = useState(1);
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) setScale(0.6); // Mobile
-      else if (width < 768) setScale(0.65);
-      else if (width < 1024) setScale(0.8); // Tablet
-      else setScale(1); // Desktop
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const width = window.innerWidth;
+  //     if (width < 640) setScale(0.6); // Mobile
+  //     else if (width < 768) setScale(0.65);
+  //     else if (width < 1024) setScale(0.8); // Tablet
+  //     else setScale(1); // Desktop
+  //   };
 
-    handleResize(); // Initial call
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   handleResize(); // Initial call
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   return (
     <group scale={scale} raycast={() => null}>
@@ -270,7 +270,7 @@ const BlackHoleSection: React.FC<BlackHoleSectionProps> = ({
       >
         <button
           className={cn(
-            "group relative aspect-square w-24 sm:w-28 md:w-32 rounded-full border-2 border-white/20",
+            "group relative aspect-square w-24 sm:w-28 md:w-32 rounded-full",
             "flex items-center justify-center overflow-hidden",
             "hover:ring-2 hover:ring-white/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
             "transition-all duration-300 ease-in-out shadow-lg hover:cursor-pointer"
@@ -294,8 +294,8 @@ const BlackHoleSection: React.FC<BlackHoleSectionProps> = ({
           </Canvas>
 
           {/* Optional hover or label text */}
-          <span className="absolute bottom-1 text-white text-xs opacity-0 group-hover:opacity-100 transition">
-            Open
+          <span className="absolute bottom-1 text-white text-xs opacity-100 group-hover:opacity-100 transition">
+            Menu
           </span>
         </button>
       </div>

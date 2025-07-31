@@ -1,11 +1,15 @@
-import React from "react";
+"use client";
+
+import { useEffect } from "react";
 import Head from "next/head";
 import { technologyIcons } from "@/data/tags";
+import { motion } from "framer-motion";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const achievements = [
-  "🏆 Winner of Smart India Hackathon 2024 – ZenSkills Mentorship Platform",
-  "🧠 Solved 600+ DSA problems across LeetCode, Codeforces, and CodeChef",
-  "📈 CGPA of 9.43 after 6 semesters at GCET (IT Branch)",
+  "Winner of Smart India Hackathon 2024 – ZenSkills Mentorship Platform",
+  "Solved 600+ DSA problems across LeetCode, Codeforces, and CodeChef",
+  "CGPA of 9.43 after 6 semesters at GCET (IT Branch)",
 ];
 
 const techCategories = [
@@ -82,6 +86,18 @@ const techCategories = [
 ];
 
 const AboutPage = () => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100); // delay ensures element is rendered
+      }
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -90,7 +106,14 @@ const AboutPage = () => {
 
       <main className="min-h-screen text-white px-2 md:px-6 py-16">
         {/* Introduction */}
-        <section className="max-w-5xl mx-auto mb-20 backdrop-blur-md bg-black/30 p-8 rounded-xl shadow-lg">
+        <motion.section
+          id="intro"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mb-20 backdrop-blur-md bg-black/30 p-8 rounded-xl shadow-lg"
+        >
           <h2 className="font-orbitron text-3xl font-bold mb-6 text-center">
             About Me
           </h2>
@@ -107,26 +130,27 @@ const AboutPage = () => {
                 I’m <strong>Jainish Patel</strong>, a third-year B.Tech student
                 in Information Technology at GCET with a deep passion for
                 full-stack development and intelligent systems. With a strong
-                CGPA of <strong>9.49/10</strong> and over{" "}
-                <strong>600+ solved DSA problems</strong>, I thrive at the
+                CGPA of
+                <strong> 9.49/10 </strong> and over{" "}
+                <strong> 600+ solved DSA problems</strong>, I thrive at the
                 intersection of scalable engineering and problem-solving.
               </p>
 
               <p>
                 My expertise lies in building production-ready platforms using
                 technologies like{" "}
-                <strong>React.js, Next.js, Express.js, PostgreSQL</strong>, and{" "}
-                <strong>Tailwind CSS</strong>. I’ve architected solutions for
+                <strong>React.js, Next.js, Express.js, PostgreSQL</strong>, and
+                <strong> Tailwind CSS</strong>. I’ve architected solutions for
                 real-world use cases, including a national-winning hackathon
-                project — <strong>ZenSkills</strong> — a mentoring platform that
-                leverages real-time chat, WebRTC, and custom matching logic to
-                connect mentees and mentors.
+                project —<strong> ZenSkills </strong> — a mentoring platform
+                that leverages real-time chat, WebRTC, and custom matching logic
+                to connect mentees and mentors.
               </p>
 
               <p>
-                I also explore the frontier of AI/ML through projects like my{" "}
-                <strong>IELTS Evaluator</strong> web app, which analyzes essays
-                using <strong>OpenAI and HuggingFace</strong> APIs with
+                I also explore the frontier of AI/ML through projects like my
+                <strong> IELTS Evaluator </strong> web app, which analyzes
+                essays using <strong> OpenAI and HuggingFace </strong> APIs with
                 voice/text input support. My development workflow is backed by
                 strong version control, API design, and a commitment to clean
                 architecture.
@@ -140,32 +164,46 @@ const AboutPage = () => {
               </p>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Achievements Section */}
-        <section className="max-w-5xl mx-auto mb-20 backdrop-blur-md bg-black/30 p-8 rounded-xl shadow-lg">
+        <motion.section
+          id="achivements"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mb-20 backdrop-blur-md bg-black/30 p-8 rounded-xl shadow-lg"
+        >
           <h2 className="text-3xl font-bold mb-6">🏆 Achievements</h2>
           <ul className="space-y-4 list-disc list-inside text-gray-300">
             {achievements.map((item, idx) => (
               <li key={idx}>{item}</li>
             ))}
           </ul>
-        </section>
+        </motion.section>
 
-        {/* Skills Section with Logos */}
-        <section className="max-w-5xl mx-auto mb-20">
+        {/* Skills Section */}
+        <motion.section
+          id="skills"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mb-20"
+        >
           <h2 className="text-3xl font-bold mb-6">🛠️ Skills</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {techCategories.map((cat) => (
-              <div
+              <motion.div
                 key={cat.title}
+                whileHover={{ scale: 1.03 }}
                 className="bg-black/30 px-10 p-4 rounded-xl shadow-md backdrop-blur"
               >
                 <h3 className="text-xl font-semibold mb-4">{cat.title}</h3>
                 <ul className="space-y-2">
                   {cat.items.map((tech) => {
-                    // const tech = technologyIcons[index];
-                    if (!tech) return null; // Skip if tech is not defined
+                    if (!tech) return null;
                     return (
                       <li
                         key={tech.name}
@@ -189,39 +227,71 @@ const AboutPage = () => {
                     );
                   })}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Timeline Section */}
-        <section className="max-w-5xl mx-auto mb-20 backdrop-blur-md bg-black/30 p-8 rounded-xl shadow-lg">
+        <motion.section
+          id="timeline"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mb-20 backdrop-blur-md bg-black/30 p-8 rounded-xl shadow-lg"
+        >
           <h2 className="text-3xl font-bold mb-6">📅 My Journey</h2>
-          <div className="border-l-2 border-purple-500 ml-4 space-y-8">
-            {[
-              { year: "2019", event: "SSC (GSEB) - 95.16%" },
-              { year: "2021", event: "HSC (GSEB) - 96.13%" },
-              { year: "2022", event: "Started B.Tech at GCET (IT)" },
-              {
-                year: "2023",
-                event: "Built A* Visualizer & Huffman Compression Tool",
-              },
-              {
-                year: "2024",
-                event: "Won Smart India Hackathon (ZenSkills Platform)",
-              },
-              { year: "2024", event: "Built IELTS AI Evaluator Web App" },
-              { year: "2024", event: "Achieved 9.49 CGPA after 5 semesters" },
-              { year: "2025", event: "Solved 600+ DSA problems" },
-              { year: "2025", event: "Launched this Portfolio Website" },
-            ].map((item, idx) => (
-              <div key={idx} className="ml-4">
-                <div className="text-purple-400 font-semibold">{item.year}</div>
-                <div className="text-gray-300">{item.event}</div>
-              </div>
-            ))}
+
+          <div className="border-l-2 border-purple-500 ml-4 space-y-8 relative">
+            {[...Array(9)].map((_, idx) => {
+              const data = [
+                { year: "2019", event: "SSC (GSEB) - 95.16%" },
+                { year: "2021", event: "HSC (GSEB) - 96.13%" },
+                { year: "2022", event: "Started B.Tech at GCET (IT)" },
+                {
+                  year: "2023",
+                  event: "Built A* Visualizer & Huffman Compression Tool",
+                },
+                {
+                  year: "2024",
+                  event: "Won Smart India Hackathon (ZenSkills Platform)",
+                },
+                { year: "2024", event: "Built IELTS AI Evaluator Web App" },
+                { year: "2024", event: "Achieved 9.49 CGPA after 5 semesters" },
+                { year: "2025", event: "Solved 600+ DSA problems" },
+                { year: "2025", event: "Launched this Portfolio Website" },
+              ][idx];
+
+              return (
+                <div key={idx} className="relative overflow-hidden">
+                  <motion.div
+                    // initial={{
+                    //   x: idx % 2 === 0 ? 60 : -60,
+                    //   opacity: 0,
+                    //   position: "relative",
+                    // }}
+                    initial={{
+                      x: 60,
+                      opacity: 0,
+                      position: "relative",
+                    }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: idx * 0.1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    style={{ willChange: "transform" }}
+                    className="ml-4"
+                  >
+                    <div className="text-purple-400 font-semibold">
+                      {data.year}
+                    </div>
+                    <div className="text-gray-300">{data.event}</div>
+                  </motion.div>
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </motion.section>
       </main>
     </>
   );
