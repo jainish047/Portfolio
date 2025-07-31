@@ -187,7 +187,8 @@ const BlackHole: React.FC<BlackHoleProps> = ({ radiating }) => {
   geometry.computeVertexNormals();
 
   // change size of bh with window size
-  const [scale, setScale] = useState(1);
+  // const [scale, setScale] = useState(1);
+  const scale=1;
   // useEffect(() => {
   //   const handleResize = () => {
   //     const width = window.innerWidth;

@@ -27,8 +27,8 @@ const HomePage = () => {
     <div className="text-white mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 items-center max-w-7xl px-4 py-8">
       {/* Hero Section */}
       <motion.section
-        {...sectionMotion}
-        className="min-h-screen flex flex-col justify-center items-center text-center px-4 col-span-1 md:col-span-3"
+        {...sectionMotion}  
+        className="min-h-screen flex flex-col justify-center items-center text-center px-4 col-span-full"
       >
         <h1 className="text-5xl md:text-6xl font-orbitron font-bold mb-4">
           Jainish Patel
@@ -123,7 +123,7 @@ const HomePage = () => {
       {/* Timeline Section */}
       <motion.section
         {...sectionMotion}
-        className="h-full w-full p-6 backdrop-blur-md border-2 border-blue-800 bg-black/30 rounded-xl col-span-1 md:col-span-1"
+        className="h-full w-full p-6 backdrop-blur-md border-2 border-blue-800 bg-black/30 rounded-xl col-span-1"
       >
         <div className="flex justify-center md:justify-between items-center mb-8">
           <h2 className="text-3xl font-semibold">My Journey</h2>
@@ -154,7 +154,7 @@ const HomePage = () => {
       <motion.section
         {...sectionMotion}
         id="projects"
-        className="w-full py-6 px-2 not-last:md:p-6 backdrop-blur-md border-2 border-blue-800 bg-black-900/30 rounded-xl col-span-1 sm:col-span-2 md:col-span-3"
+        className="w-full py-6 px-2 not-last:md:p-6 backdrop-blur-md border-2 border-blue-800 bg-black-900/30 rounded-xl col-span-1 md:col-span-3"
       >
         <div className="flex justify-center md:justify-between items-center mb-8">
           <h2 className="text-3xl font-semibold">Featured Projects</h2>
@@ -179,7 +179,7 @@ const HomePage = () => {
       </motion.section>
 
       {/* Footer */}
-      <footer className="col-span-1 md:col-span-3 text-center w-full text-sm text-gray-400 mt-16 mb-8">
+      <footer className="col-span-full text-center w-full text-sm text-gray-400 mt-16 mb-8">
         © 2025 Jainish Patel. Made with 💜 in the Milky Way.
       </footer>
     </div>
