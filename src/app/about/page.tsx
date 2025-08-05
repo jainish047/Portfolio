@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { technologyIcons } from "@/data/tags";
 import { motion } from "framer-motion";
-import { usePathname, useSearchParams } from "next/navigation";
+// import { usePathname, useSearchParams } from "next/navigation";
 
 const achievements = [
   "Winner of Smart India Hackathon 2024 – ZenSkills Mentorship Platform",
