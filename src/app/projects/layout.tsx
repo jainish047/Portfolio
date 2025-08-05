@@ -1,6 +1,6 @@
 "use client";
 // import ProjectModal from "@/components/ProjectModal";
-import { useSelectedProjectStore } from "@/store/selectedProjectStore";
+// import { useSelectedProjectStore } from "@/store/selectedProjectStore";
 
 export default function Layout({
   children,
@@ -8,9 +8,9 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   // const isMounted = useIsMounted();
-  const selectedProject = useSelectedProjectStore(
-    (store) => store.selectedProject
-  );
+  // const selectedProject = useSelectedProjectStore(
+  //   (store) => store.selectedProject
+  // );
 
   return (
     <div className="max-w-3xl mx-auto flex flex-col items-center p-4">
