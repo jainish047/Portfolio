@@ -16,6 +16,10 @@ export default function ProjectModal() {
     (store) => store
   );
 
+  useEffect(()=>{
+    console.log("selected project: ", selectedProject);
+  }, [selectedProject])
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
 

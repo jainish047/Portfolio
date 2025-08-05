@@ -6,6 +6,8 @@ import GalacticMenu from "@/components/GalacticMenu";
 import { Orbitron, Rajdhani } from "next/font/google";
 import { useSelectedProjectStore } from "@/store/selectedProjectStore";
 
+import ProjectModal from "@/components/ProjectModal";
+
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "700", "900"], // font-normal, bold, black
@@ -47,6 +49,8 @@ export default function RootLayout({
 
         {/* 3) Your scrolling content */}
         <main className="relative z-0">{children}</main>
+
+        {selectedProject && <ProjectModal />}
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 "use client";
-import ProjectModal from "@/components/ProjectModal";
+// import ProjectModal from "@/components/ProjectModal";
 import { useSelectedProjectStore } from "@/store/selectedProjectStore";
 
 export default function Layout({
@@ -19,7 +19,7 @@ export default function Layout({
         <h1 className="text-3xl font-bold font-orbitron">Projects</h1>
       </header>
       {children}
-      {selectedProject && <ProjectModal />}
+      {/* {selectedProject && <ProjectModal />} */}
     </div>
   );
 }
