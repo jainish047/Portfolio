@@ -1,14 +1,14 @@
-'use client'
+"use client";
 import { ProjectType } from "@/data/projectList";
 import { useSelectedProjectStore } from "@/store/selectedProjectStore";
 
 export default function ProjectCard({ project }: { project: ProjectType }) {
-
   const {
     title,
     description,
     // fullDescription,
     imageUrl,
+    // moreImageUrls,
     githubUrl,
     liveUrl,
     specialTags,
@@ -40,9 +40,10 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
             : "https://placehold.co/300x200?text=Tech+Card&font=roboto"
         }
         alt={title}
-        className="w-full h-48 object-cover border rounded-sm flex-1"
+        className="w-full h-48 object-contain border rounded-sm flex-1 bg-white"
         style={{ maxWidth: "300px", maxHeight: "200px" }}
       />
+
       <div className="flex flex-wrap gap-2 mb-4 absolute p-2">
         {specialTags.map((tag, index) => (
           <span
