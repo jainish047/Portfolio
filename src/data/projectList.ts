@@ -224,7 +224,7 @@ const projectList: ProjectType[] = [
       ti["Firebase Auth"],
     ],
     imageUrl: "/images/Prephelp/1.png",
-    moreImageUrls: Array.from({ length: 10 }, (_, i) => `/images/Zenskills/${i}.png`) || [],
+    moreImageUrls: Array.from({ length: 10 }, (_, i) => `/images/Prephelp/${i+1}.png`) || [],
     githubUrl: "https://github.com/techstavan/Zen-Dotslash8.git",
     liveUrl: "",
     specialTags: [tags.hackathonProject],
