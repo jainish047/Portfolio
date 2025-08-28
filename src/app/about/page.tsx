@@ -127,11 +127,11 @@ const AboutPage = () => {
 
             <div className="text-gray-300 text-lg space-y-4 text-justify">
               <p>
-                I’m <strong>Jainish Patel</strong>, a third-year B.Tech student
+                I’m <strong>Jainish Patel</strong>, a final-year B.Tech student
                 in Information Technology at GCET with a deep passion for
                 full-stack development and intelligent systems. With a strong
                 CGPA of
-                <strong> 9.49/10 </strong> and over{" "}
+                <strong> 9.43/10 </strong> and over{" "}
                 <strong> 600+ solved DSA problems</strong>, I thrive at the
                 intersection of scalable engineering and problem-solving.
               </p>
