@@ -8,9 +8,10 @@ import ProjectCard from "@/components/ProjectCard";
 // const skills = ["React", "Next.js", "Node.js", "Express", "PostgreSQL", "DSA"];
 
 const milestones = [
-  { year: "2021", title: "Started B.Tech @ GCET (IT)" },
+  { year: "2021", title: "96.13% GSEB 12th Board"}
+  { year: "2022", title: "Started B.Tech @ GCET (IT)" },
   { year: "2024", title: "Won SIH for ZenSkills Platform" },
-  { year: "2025", title: "Built IELTS AI Evaluator App" },
+  // { year: "2025", title: "Built IELTS AI Evaluator App" },
 ];
 
 const Projects = [...projectList.slice(0, 3)];
