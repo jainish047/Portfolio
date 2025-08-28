@@ -5,8 +5,10 @@ import SpaceBackground from "@/components/background";
 import GalacticMenu from "@/components/GalacticMenu";
 import { Orbitron, Rajdhani } from "next/font/google";
 import { useSelectedProjectStore } from "@/store/selectedProjectStore";
-
 import ProjectModal from "@/components/ProjectModal";
+
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -43,6 +45,9 @@ export default function RootLayout({
       className={`font-rajdhani antialiased ${rajdhani.variable} ${orbitron.variable}`}
     >
       <body className="m-0 p-0 overflow-x-hidden">
+
+        <Analytics/>
+        <SpeedInsights/>
         
         <SpaceBackground />
         {!selectedProject && <GalacticMenu />}
