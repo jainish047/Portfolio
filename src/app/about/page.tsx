@@ -141,7 +141,7 @@ const AboutPage = () => {
                 technologies like{" "}
                 <strong>React.js, Next.js, Express.js, PostgreSQL</strong>, and
                 <strong> Tailwind CSS</strong>. I’ve architected solutions for
-                real-world use cases, including a <strong>national-hackathon winning</strong>
+                real-world use cases, including a <strong>national-hackathon winning</strong>{" "}
                 project —<strong> ZenSkills </strong> — a mentoring platform
                 that leverages <strong>real-time chat, WebRTC</strong>, and custom matching logic
                 to connect mentees and mentors.
