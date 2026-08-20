@@ -4,13 +4,6 @@ import { useRef, useState } from 'react';
 
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
 
-function scramble(text: string): string {
-  return text
-    .split('')
-    .map((ch) => (ch === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]))
-    .join('');
-}
-
 interface TerminalButtonProps {
   label: string;
   /** variant: 'primary' (green glow) | 'secondary' (neutral) */
